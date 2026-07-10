@@ -1,0 +1,6 @@
+<Project>
+  <!-- Override repo-wide net6.0;net8.0 — samples demonstrate API usage on net8.0 only. -->
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+  </PropertyGroup>
+</Project>
