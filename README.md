@@ -1,16 +1,18 @@
 # Xg3.Auth
 
-Caller authentication for .NET apps calling APIs **forwarded by the xgress3 gateway**.
+Caller authentication for .NET apps calling APIs **forwarded by the [xgress3](https://xgress3.com) gateway**.
+
+**Product:** [xgress3.com](https://xgress3.com) · **Documentation:** [docs.xgress3.com](https://docs.xgress3.com)
 
 Supports **.NET 6.0 and later** (`net6.0` and `net8.0` builds in the NuGet package).
 
 ## What is xgress3?
 
-xgress3 is a zero-trust HTTP access layer for private services. A lightweight agent runs inside the private environment and establishes a persistent, outbound-only, mTLS-protected connection to the xgress3 control plane. No inbound ports are opened and no user-level shared credentials are distributed.
+[xgress3](https://xgress3.com) is a zero-trust HTTP access layer for private services. A lightweight agent runs inside the private environment and establishes a persistent, outbound-only, mTLS-protected connection to the xgress3 control plane. No inbound ports are opened and no user-level shared credentials are distributed.
 
 Each backend service is reachable through a stable tenant hostname of the form `https://{account-id}--{service-id}.{region}.xg3.io/{path}`. Requests terminate at the xgress3 gateway rather than inside the private network. The control plane authenticates and authorizes every request against explicit policy before forwarding it over the existing outbound connection to the agent, which acts as a transport-only forwarder. Requests are rejected by default unless explicitly permitted.
 
-xgress3 controls access to the service; backend authentication and authorization are unchanged. Callers therefore supply two independent things: the credentials your backend already expects, and an xgress3 caller credential that the control plane validates.
+xgress3 controls access to the service; backend authentication and authorization are unchanged. Callers therefore supply two independent things: the credentials your backend already expects, and an xgress3 caller credential that the control plane validates. See [Ingress authentication](https://docs.xgress3.com/developers/ingress-authentication) in the documentation for the HTTP contract this package implements.
 
 **Xg3.Auth** handles the caller side for .NET in **two supported modes** (pick one per `HttpClient` — never both on the same request):
 
