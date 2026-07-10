@@ -46,7 +46,7 @@ dotnet add package Xg3.Auth
 
 Pick **one auth mode per `HttpClient`** — the gateway rejects requests with both `X-Xg3-Authorization` and `X-Xg3-Service-Key`.
 
-Working sample projects live under [`samples/`](samples/).
+Working sample projects are in the [samples](https://github.com/xgress3/xgress3-dotnet-auth/tree/main/samples) folder on GitHub.
 
 ### JWT with dependency injection
 

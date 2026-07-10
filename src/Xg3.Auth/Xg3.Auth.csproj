@@ -24,6 +24,12 @@
 
     <PackageProjectUrl>https://xgress3.com</PackageProjectUrl>
 
+    <RepositoryUrl>https://github.com/xgress3/xgress3-dotnet-auth.git</RepositoryUrl>
+
+    <RepositoryType>git</RepositoryType>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
     <!-- Release version is set from the git tag in publish.yml (e.g. v1.0.0 -> 1.0.0). -->
     <Version>0.0.0-dev</Version>
 
