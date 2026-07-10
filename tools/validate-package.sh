@@ -12,7 +12,14 @@ SAMPLES=(
 )
 
 echo "==> Pack Xg3.Auth (Release)"
-dotnet pack src/Xg3.Auth -c Release -o ./artifacts --property:ContinuousIntegrationBuild=true
+PACK_ARGS=(-c Release -o ./artifacts --property:ContinuousIntegrationBuild=true)
+if [ -n "${VERSION:-}" ]; then
+  echo "==> Package version: $VERSION (from tag)"
+  PACK_ARGS+=(--property:Version="$VERSION")
+else
+  echo "==> Package version: from project file (no VERSION env set)"
+fi
+dotnet pack src/Xg3.Auth "${PACK_ARGS[@]}"
 
 NUPKG="$(ls -1 artifacts/Xg3.Auth.*.nupkg | head -1)"
 echo "==> Packed: $NUPKG"

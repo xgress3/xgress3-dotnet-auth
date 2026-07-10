@@ -30,7 +30,8 @@
 
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
 
-    <Version>0.1.0</Version>
+    <!-- Release version is set from the git tag in publish.yml (e.g. v1.0.0 -> 1.0.0). -->
+    <Version>0.0.0-dev</Version>
 
     <Authors>xgress3</Authors>
 

@@ -23,6 +23,8 @@ jobs:
       - run: dotnet test tests/Xg3.Auth.ClientIntegration.Tests --framework net6.0
       - run: dotnet test tests/Xg3.Auth.ClientIntegration.Tests --framework net8.0
       - run: chmod +x tools/validate-package.sh
+      - name: Set version from tag
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_ENV"
       - run: ./tools/validate-package.sh
       - name: NuGet login (OIDC -> short-lived API key)
         uses: NuGet/login@v1
