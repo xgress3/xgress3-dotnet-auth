@@ -25,7 +25,9 @@ rm -rf "$TMP_NUSPEC"
 
 for sample in "${SAMPLES[@]}"; do
   echo "==> Canary: $sample (net8.0)"
-  dotnet restore "$sample"
+  dotnet restore "$sample" \
+    --source "$ROOT/artifacts" \
+    --source "https://api.nuget.org/v3/index.json"
   dotnet build "$sample" -c Release --no-restore
 done
 

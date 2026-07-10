@@ -1,6 +1,6 @@
 # Consumer sample apps
 
-Four **net8.0** samples restore **Xg3.Auth** from `./artifacts` (see root `nuget.config`) after `dotnet pack`.
+Four **net8.0** samples restore **Xg3.Auth** from a local pack output after `dotnet pack`. CI does this via `tools/validate-package.sh`.
 
 | Project | Integration | What it demonstrates |
 |---------|-------------|-------------------|
@@ -17,8 +17,8 @@ CI runs `tools/validate-package.sh` after tests.
 
 ```bash
 dotnet pack src/Xg3.Auth -c Release -o ./artifacts
-dotnet build samples/JwtAuth.Direct -c Release
-dotnet build samples/SecretKeyAuth.Direct -c Release
-dotnet build samples/JwtAuth.DependencyInjection -c Release
-dotnet build samples/SecretKeyAuth.DependencyInjection -c Release
+dotnet restore samples/JwtAuth.Direct --source ./artifacts --source https://api.nuget.org/v3/index.json
+dotnet build samples/JwtAuth.Direct -c Release --no-restore
+# repeat restore/build for the other samples, or run:
+./tools/validate-package.sh
 ```
